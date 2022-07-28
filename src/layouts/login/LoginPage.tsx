@@ -78,7 +78,7 @@ export function LoginPage(): JSX.Element {
             <b>{t("login.name")}</b>
           </span>
         </Group>
-        <div style={{ width: 500, margin: "auto" }}>
+        <div style={{ width: 500, maxWidth: "100%", margin: "auto" }}>
           <Card>
             <Stack>
               <Title order={3}>{t("login.login")}</Title>
