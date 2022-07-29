@@ -1,6 +1,7 @@
 import { Loader, Title, useMantineColorScheme } from "@mantine/core";
 import React, { useEffect } from "react";
 import useDimensions from "react-cool-dimensions";
+import { useTranslation } from "react-i18next";
 
 import { fetchPhotoMonthCounts } from "../../actions/utilActions";
 import { useAppDispatch, useAppSelector } from "../../store/store";
@@ -9,6 +10,8 @@ const { Chart, Bars, Ticks, Layer } = require("rumble-charts");
 
 export function EventCountMonthGraph() {
   const { colorScheme } = useMantineColorScheme();
+
+  const { t } = useTranslation();
 
   const { observe, width } = useDimensions({
     onResize: ({ observe, unobserve, width, height, entry }) => {
@@ -32,7 +35,7 @@ export function EventCountMonthGraph() {
   } else {
     return (
       <div style={{ height: 280 }}>
-        <Title order={3}>Monthly Photo Counts</Title>
+        <Title order={3}>{t('monthly-photo-counts')}</Title>
         <Loader />
       </div>
     );
@@ -49,10 +52,10 @@ export function EventCountMonthGraph() {
 
   return (
     <div ref={observe} style={{ height: 280 }}>
-      <Title order={3}>Monthly Photo Counts</Title>
+      <Title order={3}>{t('monthly-photo-counts')}</Title>
       <div>
         <Chart width={width} height={250} series={[data[0]]}>
-          <Layer width="85%" height="85%" position="middle center">
+          <Layer width="85%" height="85%" position={t('middle-center')}>
             <Ticks
               axis="y"
               lineLength="100%"
